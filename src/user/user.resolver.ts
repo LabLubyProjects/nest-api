@@ -1,4 +1,4 @@
-import { Query } from '@nestjs/common';
+import { Query } from '@nestjs/graphql';
 import { Args, Mutation, Resolver } from '@nestjs/graphql';
 import { CreateUserInput } from './dto/create-user-input';
 import { User } from './user.entity';
@@ -10,7 +10,7 @@ export class UserResolver {
 
   @Query(() => [User])
   async users(): Promise<User[]> {
-    const users = await this.userService.findAllUses();
+    const users = await this.userService.findAllUsers();
     return users;
   }
 
